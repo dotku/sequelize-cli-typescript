@@ -26,6 +26,15 @@ services:
       - "5432:5432"
 
   # MySQL
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: sequelize_test
+    ports:
+      - "33060:3306"
+    container_name: mysql
+
   mysql-57:
     image: mysql:5.7
     environment:
