@@ -27,7 +27,8 @@ jobs:
       - run: yarn install --frozen-lockfile --ignore-engines
       - run: yarn add sequelize@${{ matrix.sequelize-version }} --ignore-engines
       - run: docker-compose up -d ${DIALECT}
-      - run: docker run --link ${DIALECT}:db -e CHECK_PORT=${SEQ_PORT::-1} -e CHECK_HOST=db giorgos/takis
+      - run: docker network create cli_default
+      - run: docker run --link ${DIALECT}:db -e CHECK_PORT=${SEQ_PORT::-1} -e CHECK_HOST=db --net sequelize-cli-typescript_default giorgos/takis
       - run: yarn test
   test-mysql:
     strategy:
@@ -48,7 +49,8 @@ jobs:
       - run: yarn install --frozen-lockfile --ignore-engines
       - run: yarn add sequelize@${{ matrix.sequelize-version }} --ignore-engines
       - run: docker-compose up -d ${DIALECT}
-      - run: docker run --link ${DIALECT}:db -e CHECK_PORT=${SEQ_PORT::-1} -e CHECK_HOST=db giorgos/takis
+      - run: docker network create cli_default
+      - run: docker run --link ${DIALECT}:db -e CHECK_PORT=${SEQ_PORT::-1} -e CHECK_HOST=db --net cli_default giorgos/takis
       - run: yarn test
   test-sqlite:
     strategy:
