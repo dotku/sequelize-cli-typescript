@@ -80,5 +80,8 @@
   "homepage": "https://github.com/douglas-treadwell/sequelize-cli-typescript",
   "engines": {
     "node": ">=4.0.0"
+  },
+  "resolutions": {
+    "graceful-fs": "^4.2.11"
   }
 }

@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node-version: [10, 16]
+        node-version: [16]
         sequelize-version: [5, latest]
     name: Postgres (Node ${{ matrix.node-version }}, Sequelize ${{ matrix.sequelize-version }})
     runs-on: ubuntu-latest
